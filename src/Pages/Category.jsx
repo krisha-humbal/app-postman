@@ -106,6 +106,7 @@ const Category = () => {
     }
   };
 
+
   const handleUpdate = (id) => {
     const categoryToEdit = categories.find((cat) => cat._id === id);
     setEditId(id);
