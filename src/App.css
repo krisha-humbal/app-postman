@@ -39,7 +39,7 @@
 .css-1bn13uf-MuiDrawer-docked .MuiDrawer-paper {
   box-sizing: border-box;
   width: 240px;
-  background-color: black;
+  background-color:#000F38;
 }
 
 
@@ -47,5 +47,5 @@
  
 }
 .css-1bn13uf-MuiDrawer-docked .MuiDrawer-paper{
-  border-right: 2px solid white;
+  border-right: 2px solid #000F38;
 }

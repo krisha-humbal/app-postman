@@ -6,7 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
 const Signup = () => {
-    let navigate = useNavigate()
+  let navigate = useNavigate()
   const formik = useFormik({
     initialValues: {
       firstname: "",
@@ -15,7 +15,8 @@ const Signup = () => {
       email: "",
       password: "",
     },
-    onSubmit: async (values,{resetForm}) => {
+    
+    onSubmit: async (values, { resetForm }) => {
       try {
         let res = await axios.post(
           "https://interviewback-ucb4.onrender.com/admin/signup",

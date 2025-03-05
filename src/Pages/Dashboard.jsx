@@ -1,14 +1,16 @@
 import React from 'react'
 import ResponsiveDrawer from '../Component/Drawer'
-import { useState,useEffect } from 'react';
+import { useState, useEffect } from 'react';
 // import BasicCard from '../Component/Card'
-import { Box,
+import {
+  Box,
   Grid,
   Card,
   CardContent,
   Typography,
-  CircularProgress, } from '@mui/material'
-  import CategoryIcon from "@mui/icons-material/Category";
+  CircularProgress,
+} from '@mui/material'
+import CategoryIcon from "@mui/icons-material/Category";
 import SubdirectoryArrowRightIcon from "@mui/icons-material/SubdirectoryArrowRight";
 import QuestionMarkIcon from "@mui/icons-material/QuestionMark";
 import { useNavigate } from "react-router-dom";
@@ -16,7 +18,7 @@ import { useNavigate } from "react-router-dom";
 // import { PieChart, Pie, Cell, Legend, ResponsiveContainer } from "recharts";
 function Dashboard() {
   const [cardData, setCardData] = useState([]);
-  const [loading, setLoading] = useState(true); // Loading state
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
 
@@ -54,7 +56,7 @@ function Dashboard() {
     ];
 
     setCardData(updatedCardData);
-    setLoading(false); // Data is ready, stop loading
+    setLoading(false); 
   }, [token, navigate]);
 
   // const pieChartData = cardData.map((item) => ({
@@ -63,16 +65,16 @@ function Dashboard() {
   // }));
   return (
     <ResponsiveDrawer >
-      
+
       <Box sx={{ flexGrow: 1, padding: '5px' }}>
-        {/* Loading Spinner */}
+    
         {loading ? (
           <Box sx={{ display: "flex", justifyContent: "center", marginTop: "40px" }}>
             <CircularProgress />
           </Box>
         ) : (
           <>
-            {/* Card Section */}
+           
             <Grid container spacing={2}>
               {cardData.map((card, index) => (
                 <Grid item xs={12} sm={6} md={4} key={index}>
@@ -98,11 +100,11 @@ function Dashboard() {
               ))}
             </Grid>
 
-           
+
           </>
         )}
       </Box>
-      
+
     </ResponsiveDrawer>
   )
 }

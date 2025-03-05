@@ -16,7 +16,7 @@ const TableComponent = ({ TableHeader, TableData, renderRow }) => {
                     fontWeight: "bold",
                     textAlign: "center",
                     whiteSpace: "nowrap", 
-                    backgroundColor:'black'// Prevent text wrapping
+                    backgroundColor:'#000F38'// Prevent text wrapping
                   }}
                 >
                   {el}

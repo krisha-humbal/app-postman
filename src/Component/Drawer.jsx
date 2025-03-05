@@ -25,6 +25,8 @@ import { FaRegQuestionCircle } from "react-icons/fa";
 import { useEffect } from 'react';
 import { useLocation } from "react-router-dom";
 import Img1 from '../Image/lgo.png';
+import { Button } from '@mui/material';
+import HomeIcon from '@mui/icons-material/Home';
 const drawerWidth = 240;
 
 let pages = [
@@ -76,7 +78,7 @@ const location = useLocation();
 
   const drawer = (
     <div style={{width:'240px'}}>
-      <Toolbar sx={{backgroundColor:'black',width:'100%'}}>
+      <Toolbar sx={{backgroundColor:'#000F38',width:'100%'}}>
        <img src={Img1} alt="" width={'100%'} />
       </Toolbar>
       <Divider />
@@ -88,7 +90,7 @@ const location = useLocation();
         <ListItem
           disablePadding
           sx={{
-            backgroundColor: isActive ? "orange" : "black",
+            backgroundColor: isActive ? "white" : "#000F38",
             // color: isActive ? "black" : "white"
             // "&:hover": {
             //   backgroundColor: "lightblue",
@@ -128,8 +130,11 @@ const location = useLocation();
   let logoutPanel = () => {
     localStorage.removeItem("Token")
     navigate("/login")
+}
+let goHome = () => {
+  // localStorage.removeItem("Token")
   
-
+  navigate("/")
 }
   useEffect(() => {
     if(!Token){
@@ -147,7 +152,7 @@ const location = useLocation();
         sx={{
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           ml: { sm: `${drawerWidth}px` },
-          backgroundColor:'black'
+          backgroundColor:'#000F38'
         }}
       >
         <Toolbar sx={{display:'flex',justifyContent:'space-between'}}> 
@@ -165,11 +170,13 @@ const location = useLocation();
             Dashboard
           </Typography>
          
-          
+          <Toolbar sx={{display:'flex'}}>
           <IoLogOut style={{fontSize:'25px',cursor:'pointer'}} onClick={logoutPanel}>
             
-          </IoLogOut>
-
+            </IoLogOut>
+            <HomeIcon style={{cursor:'pointer'}} onClick={goHome}></HomeIcon>
+          </Toolbar>
+          
         </Toolbar>
       </AppBar>
       <Box

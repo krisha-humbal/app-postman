@@ -68,7 +68,7 @@ const Category = () => {
 
       const fetchCat = res.data.data;
       setCategories(fetchCat);
-      localStorage.setItem("category",fetchCat.length)
+      localStorage.setItem("category", fetchCat.length)
     } catch (error) {
       console.error("Error fetching category data:", error);
       toast.error("Failed to fetch category data.");
@@ -114,87 +114,43 @@ const Category = () => {
     handleClickOpen();
   };
 
-  // const handleSwitchToggle = async (id) => {
-  //   const categoryToToggle = categories.find((cat) => cat._id === id);
-  //   const newStatus = categoryToToggle.status === "on" ? "off" : "on";
-
-  //   try {
-  //     await axios.patch(
-  //       `https://interviewback-ucb4.onrender.com/category/${id}`,
-  //       { status: newStatus },
-  //       { headers: { Authorization: token } }
-  //     );
-
-  //     // After toggling category status, refetch subcategories to update their visibility
-  //     await axios.get("https://interviewback-ucb4.onrender.com/subcategory/", {
-  //       headers: { Authorization: token },
-  //     });
-      
-  //     fetchCategories(); // Refresh category list as well
-  //   } catch (error) {
-  //     toast.error("Failed to toggle status");
-  //     console.error(error);
-  //   }
-  // };
-  // const handleSwitchToggle = async (id) => {
-  //   const categoryToToggle = categories.find((cat) => cat._id === id);
-  //   const newStatus = categoryToToggle.status === "on" ? "off" : "on";
-
-  //   try {
-  //     await axios.patch(
-  //       `https://interviewback-ucb4.onrender.com/category/${id}`,
-  //       { status: newStatus },
-  //       { headers: { Authorization: token } }
-  //     );
-
-      
-  //     await axios.get("https://interviewback-ucb4.onrender.com/subcategory/", {
-  //       headers: { Authorization: token },
-  //     });
-      
-  //     fetchCategories(); // Refresh category list as well
-  //   } catch (error) {
-  //     toast.error("Failed to toggle status");
-  //     console.error(error);
-  //   }
-  // };
   const handleSwitchToggle = async (id) => {
     const categoryToToggle = categories.find((cat) => cat._id === id);
     const newStatus = categoryToToggle.status === "on" ? "off" : "on";
-  
+
     try {
-      // Update category status
+
       await axios.patch(
         `https://interviewback-ucb4.onrender.com/category/${id}`,
         { status: newStatus },
         { headers: { Authorization: token } }
       );
-  
-      // Fetch subcategories related to this category
+
+
       const subcategoryRes = await axios.get("https://interviewback-ucb4.onrender.com/subcategory/", {
         headers: { Authorization: token },
       });
-  
+
       const relatedSubcategories = subcategoryRes.data.data.filter(
         (sub) => sub.categoryID?._id === id
       );
-  
-      // Update status of all related subcategories
+
+
       for (const sub of relatedSubcategories) {
         await axios.patch(
           `https://interviewback-ucb4.onrender.com/subcategory/${sub._id}`,
-          { status: newStatus },  // Set subcategory status same as category
+          { status: newStatus },
           { headers: { Authorization: token } }
         );
       }
-  
-      fetchCategories(); // Refresh category list
+
+      fetchCategories();
     } catch (error) {
       toast.error("Failed to toggle status");
       console.error(error);
     }
   };
-  
+
   const handleClickOpen = () => setOpen(true);
   const handleClose = () => {
     setOpen(false);
@@ -217,11 +173,11 @@ const Category = () => {
             fullWidth
           />
         </Grid>
-        <Grid item xs={12} sm={3} sx={{ display: "flex", alignItems:'center' }}>
+        <Grid item xs={12} sm={3} sx={{ display: "flex", alignItems: 'center' }}>
           <Button
             variant="contained"
             startIcon={<AddIcon />}
-            sx={{ backgroundColor: "black" }}
+            sx={{ backgroundColor: "#000F38" }}
             onClick={handleClickOpen}
           >
             Add Category
@@ -241,7 +197,7 @@ const Category = () => {
                 <TableCell align="center">
                   <Switch
                     checked={row.status === "on"}
-                    onClick={() => handleSwitchToggle(row._id,row._id)}
+                    onClick={() => handleSwitchToggle(row._id, row._id)}
                   />
                 </TableCell>
                 <TableCell align="center">

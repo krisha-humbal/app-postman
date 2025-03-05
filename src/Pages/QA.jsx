@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import {
   Box,
@@ -59,7 +60,7 @@ const QA = () => {
 
       const fetchQAData = res.data.data;
       setQAData(fetchQAData);
-      localStorage.setItem("question",fetchQAData.length)
+      localStorage.setItem("question", fetchQAData.length)
     } catch (error) {
       console.error("Error fetching Q&A data:", error);
       toast.error("Failed to fetch Q&A data.");
@@ -70,7 +71,7 @@ const QA = () => {
 
   const fetchCategories = async () => {
     try {
-      const res = await axios.get("https://interviewback-ucb4.onrender.com/category/", {
+      const res = await axios.get("https://interviewback-ucb4.onrender.c              om/category/", {
         headers: { Authorization: token },
       });
       setCategories(res.data.data);
@@ -111,7 +112,7 @@ const QA = () => {
     setEditMode(!!qa);
     setDialogOpen(true);
   };
- 
+
   const closeDialog = () => {
     setDialogOpen(false);
     setCurrentQA({ id: null, questions: "", answer: "", subcategoryID: "" });
@@ -124,7 +125,7 @@ const QA = () => {
         answer: currentQA.answer,
         subcategoryID: currentQA.subcategoryID,
       };
-  
+
       if (editMode) {
         await axios.patch(
           `https://interviewback-ucb4.onrender.com/questions/${currentQA.id}`,
@@ -140,7 +141,7 @@ const QA = () => {
         );
         toast.success("Q&A added successfully!");
       }
-  
+
       fetchQAData();
       closeDialog();
     } catch (error) {
@@ -148,7 +149,7 @@ const QA = () => {
       toast.error("Failed to submit Q&A.");
     }
   };
-  
+
   const handleDelete = async (id) => {
     try {
       await axios.delete(`https://interviewback-ucb4.onrender.com/questions/${id}`, {
@@ -162,12 +163,10 @@ const QA = () => {
     }
   };
 
-  const filteredQAData = qaData.filter(
+  const filterQAData = qaData.filter(
     (item) =>
       item.questions.toLowerCase().includes(search.toLowerCase()) ||
       item.answer.toLowerCase().includes(search.toLowerCase())
-  ).filter(
-    (item) => item.subcategoryID?.status === "on" 
   );
 
   useEffect(() => {
@@ -195,7 +194,7 @@ const QA = () => {
               startIcon={<AddIcon />}
               fullWidth
               onClick={() => openDialog()}
-              sx={{ backgroundColor: "black"}}
+              sx={{ backgroundColor: "#000F38" }}
             >
               Add Q&A
             </Button>
@@ -209,20 +208,20 @@ const QA = () => {
         ) : (
           <TableComponent
             TableHeader={tableHeaders}
-            TableData={filteredQAData}
+            TableData={filterQAData}
             renderRow={(row, index) => (
               <>
-                <TableCell align="center">{index + 1}</TableCell>
-                <TableCell align="center">{row.questions}</TableCell>
-                <TableCell align="center">{row.answer}</TableCell>
-                <TableCell align="center">{row.subcategoryID?.subCategoryname || "N/A"}</TableCell>
-                <TableCell align="center">{row.subcategoryID?.categoryID?.categoryName}</TableCell>
-                <TableCell align="center">
+                <TableCell>{index + 1}</TableCell>
+                <TableCell>{row.questions}</TableCell>
+                <TableCell>{row.answer}</TableCell>
+                <TableCell>{row.subcategoryID?.subCategoryname || "N/A"}</TableCell>
+                <TableCell>{row.subcategoryID?.categoryID?.categoryName}</TableCell>
+                <TableCell>
                   <Button variant="contained" color="error" onClick={() => handleDelete(row._id)}>
                     <DeleteIcon />
                   </Button>
                 </TableCell>
-                <TableCell align="center">
+                <TableCell>
                   <Button
                     variant="contained"
                     color="success"
@@ -266,14 +265,11 @@ const QA = () => {
                 setCurrentQA((prev) => ({ ...prev, subcategoryID: e.target.value }))
               }
             >
-              
-              {subcategories
-                .filter((sub) => sub.status === "on")
-                .map((sub) => (
-                  <MenuItem key={sub._id} value={sub._id}>
-                    {sub.subCategoryname}
-                  </MenuItem>
-                ))}
+              {subcategories.map((sub) => (
+                <MenuItem key={sub._id} value={sub._id}>
+                  {sub.subCategoryname}
+                </MenuItem>
+              ))}
             </Select>
           </FormControl>
         </DialogContent>

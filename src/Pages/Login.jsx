@@ -1,93 +1,4 @@
-// import { Box, Button, Typography } from "@mui/material";
-// import React from "react";
-// import TextField from "../Component/TextField";
-// import { useFormik } from "formik";
-// import { Link, useNavigate } from "react-router-dom";
-// import axios from "axios";
-// import toast, { Toaster } from "react-hot-toast";
-// const Signup = () => {
-//     let navigate = useNavigate()
-//   const formik = useFormik({
-//     initialValues: {
-//       firstname: "",
-//       lastname: "",
-//       contact: "",
-//       email: "",
-//       password: "",
-//     },
-//     onSubmit: async (values,{resetForm}) => {
-//       try {
-//         let res = await axios.post(
-//           "https://interviewback-ucb4.onrender.com/admin/login",
-//           values
-//         );
-//         toast.success(res.data.message);
-//         resetForm()
-//         navigate("/dashboard")
-//       } catch (error) {
-//         console.log(error);
-//       }
-//     },
-//   });
 
-//   return (
-//     <Box
-//       sx={{
-//         width: "100%",
-//         height: "100vh",
-//         backgroundColor: "#006bd6",
-//         display: "flex",
-//         alignItems: "center",
-//         justifyContent: "center",
-//       }}
-//     >
-//       <Box
-//         sx={{
-//           width: "300px",
-//           padding: "20px",
-//           borderRadius: "10px",
-//           backgroundColor: "white",
-//         }}
-//       >
-//         <Typography
-//           variant="h6"
-//           component={"h1"}
-//           sx={{ textAlign: "center", marginBottom: "10px" }}
-//         >
-//           Welcome to Login
-//         </Typography>
-//         <form onSubmit={formik.handleSubmit}>
-         
-//           <TextField
-//             label="Email"
-//             name="email"
-//             type="email"
-//             onChange={formik.handleChange}
-//             value={formik.values.email}
-//           />
-//           <TextField
-//             label="Password"
-//             name="password"
-//             type="password"
-//             onChange={formik.handleChange}
-//             value={formik.values.password}
-//           />
-//           <Button
-//             variant="contained"
-//             type="submit"
-//             sx={{ width: "100%", margin: "10px 0px" }}
-//           >
-//             Login
-//           </Button>
-//         </form>
-      
-//       </Box>
-//       <Toaster />
-//     </Box>
-//   );
-// };
-
-// export default Signup;
 import React, { useState, useEffect } from "react";
 import {
   Box,
@@ -127,7 +38,7 @@ const Login = () => {
     email: Yup.string().email("Invalid email").required("Email is required"),
   });
 
-  // Formik setup
+
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -142,7 +53,7 @@ const Login = () => {
           values
         );
         toast.success(response.data.message, { theme: "dark" });
-        localStorage.setItem("Token",response.data.token)
+        localStorage.setItem("Token", response.data.token)
         navigate("/dashboard");
       } catch (error) {
         console.error("Login failed:", error.response?.data?.message || error.message);
@@ -153,7 +64,7 @@ const Login = () => {
     },
   });
 
-  // Redirect if already logged in
+ 
   useEffect(() => {
     const Token = localStorage.getItem("Token");
     if (Token) {
@@ -168,7 +79,7 @@ const Login = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        // background: "linear-gradient(135deg, #ff9a9e, #fecfef)",
+        background: "linear-gradient(135deg,rgb(47, 104, 184),rgb(129, 147, 173))",
         padding: 2,
       }}
     >
@@ -178,8 +89,8 @@ const Login = () => {
           p: { xs: 3, sm: 5 },
           borderRadius: 3,
           boxShadow: "0px 8px 24px rgba(232, 231, 238, 0.99)",
-          backgroundColor: "rgba(255, 255, 255, 0)",
-        
+          backgroundColor: "rgba(255, 255, 255, 0.85)",
+
           mx: { xs: 2, sm: 0 },
         }}
       >
@@ -248,7 +159,7 @@ const Login = () => {
             />
           </FormControl>
 
-          {/* Submit Button */}
+      
           <Button
             type="submit"
             variant="contained"
