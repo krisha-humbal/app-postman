@@ -79,7 +79,6 @@ const Login = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        background: "linear-gradient(135deg,rgb(47, 104, 184),rgb(129, 147, 173))",
         padding: 2,
       }}
     >
@@ -89,7 +88,7 @@ const Login = () => {
           p: { xs: 3, sm: 5 },
           borderRadius: 3,
           boxShadow: "0px 8px 24px rgba(232, 231, 238, 0.99)",
-          backgroundColor: "rgba(255, 255, 255, 0.85)",
+      
 
           mx: { xs: 2, sm: 0 },
         }}
