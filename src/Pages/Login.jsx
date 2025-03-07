@@ -144,18 +144,18 @@ const Login = () => {
               onBlur={formik.handleBlur}
               error={formik.touched.password && Boolean(formik.errors.password)}
               helperText={formik.touched.password && formik.errors.password}
-              // InputProps={{
-              //   endAdornment: (
-              //     <InputAdornment position="end">
-              //       <IconButton
-              //         onClick={handleClickShowPassword}
-              //         onMouseDown={handleMouseDownPassword}
-              //       >
-              //         {showPassword ? <VisibilityOff /> : <Visibility />}
-              //       </IconButton>
-              //     </InputAdornment>
-              //   ),
-              // }}
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton
+                      onClick={handleClickShowPassword}
+                      onMouseDown={handleMouseDownPassword}
+                    >
+                      {showPassword ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
                InputProps={{
               endAdornment: (
                 <InputAdornment position="end">

@@ -75,7 +75,6 @@ function Home() {
             <img src={Img} alt="" width={'250px'} style={{ width: { xs: '100%' } }} />
           </Box>
           <Box sx={{ display: { xs: "none", md: "block",sm:'block' } }}>
-
             <Button color="inherit" onClick={handleSingnup}>Signup</Button>
             <Button color="inherit" onClick={handleLogin}>Login</Button>
           </Box>

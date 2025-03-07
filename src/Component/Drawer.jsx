@@ -129,7 +129,7 @@ const location = useLocation();
   );
   let logoutPanel = () => {
     localStorage.removeItem("Token")
-    navigate("/login")
+    navigate("/")
 }
 let goHome = () => {
   // localStorage.removeItem("Token")
