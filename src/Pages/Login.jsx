@@ -89,7 +89,7 @@ const Login = () => {
           p: { xs: 3, sm: 5 },
           borderRadius: 3,
           boxShadow: "0px 8px 24px rgba(232, 231, 238, 0.99)",
-          backgroundColor: "rgba(255, 255, 255, 0.85)",
+      
 
           mx: { xs: 2, sm: 0 },
         }}
@@ -144,18 +144,27 @@ const Login = () => {
               onBlur={formik.handleBlur}
               error={formik.touched.password && Boolean(formik.errors.password)}
               helperText={formik.touched.password && formik.errors.password}
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <IconButton
-                      onClick={handleClickShowPassword}
-                      onMouseDown={handleMouseDownPassword}
-                    >
-                      {showPassword ? <VisibilityOff /> : <Visibility />}
-                    </IconButton>
-                  </InputAdornment>
-                ),
-              }}
+              // InputProps={{
+              //   endAdornment: (
+              //     <InputAdornment position="end">
+              //       <IconButton
+              //         onClick={handleClickShowPassword}
+              //         onMouseDown={handleMouseDownPassword}
+              //       >
+              //         {showPassword ? <VisibilityOff /> : <Visibility />}
+              //       </IconButton>
+              //     </InputAdornment>
+              //   ),
+              // }}
+               InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton onClick={handleClickShowPassword} onMouseDown={handleMouseDownPassword}>
+                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                  </IconButton>
+                </InputAdornment>
+              ),
+            }}
             />
           </FormControl>
 
@@ -168,11 +177,7 @@ const Login = () => {
             sx={{
               py: 1.5,
               fontWeight: "bold",
-              background: "linear-gradient(90deg, #43cea2, #185a9d)",
-              color: "#fff",
-              "&:hover": {
-                background: "linear-gradient(90deg, #185a9d, #43cea2)",
-              },
+              backgroundColor:'#E72F3F'
             }}
           >
             {loader ? <CircularProgress size={24} color="inherit" /> : "Login"}
