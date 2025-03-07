@@ -71,7 +71,7 @@ const QA = () => {
 
   const fetchCategories = async () => {
     try {
-      const res = await axios.get("https://interviewback-ucb4.onrender.c              om/category/", {
+      const res = await axios.get("https://interviewback-ucb4.onrender.com/category/", {
         headers: { Authorization: token },
       });
       setCategories(res.data.data);

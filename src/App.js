@@ -10,6 +10,7 @@ import './App.css';
 import Home from './Pages/Home'
 import UseContextEx from './Component/UseContextEx'
 import FormikAPiCrud from './Component/FormikAPiCrud'
+import NormalCrud from './Component/NormalCrud'
 const App = () => {
   return (
     <Routes>
@@ -24,6 +25,7 @@ const App = () => {
         <Route path='Question' element={<QA />} />
       </Route>
     </Routes>
+    // <NormalCrud/>
   //  <FormikAPiCrud/>
   // <UseContextEx></UseContextEx>
   )
