@@ -161,7 +161,7 @@ function Home() {
             <Box sx={{width:{xs:'90%',sm:'30%',md:'50%'}}}>
               <Typography>
                 <h1 style={{fontSize:{xs:'10px',sm:'21px',md:'30px'}}}>Create Your Great <span style={{color:'#E72E3F'}}>Learning Map</span> With Us</h1>
-                <p>Join Us to Make your Interview Preparation More Easy And Effective,And Get Fater Selection</p>
+                <p>Join Us to Make your Interview Preparation More Easy And Effective,And Get Faster Selection.</p>
               </Typography>
             </Box>
           </Container>        
